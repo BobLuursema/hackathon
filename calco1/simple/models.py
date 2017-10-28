@@ -1,26 +1,23 @@
 from django.db import models
 
 # Create your models here.
-class IP(models.Model):
-    ip = models.IntegerField()
-    browsing = models.CharField(max_length=30)
-
-    def __str__(self):
-        return self.ip
-
-class Regeling(models.Model):
+class Regelingen(models.Model):
     naam = models.CharField(max_length=30)
-    url = models.CharField(max_length=50)
+    update_url = models.CharField(max_length=100)
+    insert_url = models.CharField(max_length=100)
+    info_url = models.CharField(max_length=100)
 
     def __str__(self):
         return self.naam
 
 class Persoon(models.Model):
     naam = models.CharField(max_length=30)
+    geslacht = models.CharField(max_length=1)
     leeftijd = models.IntegerField()
-    contactmomenten = models.ManyToManyField(Regeling, related_name="contact_reg")
-    lopend = models.ManyToManyField(Regeling, related_name="lopend_reg")
-    browsing = models.ManyToManyField(Regeling, related_name="browsing_reg")
-
+    werkend = models.BooleanField()
+    ontslagaanvraag = models.BooleanField()
+    regelingen = models.ManyToManyField(Regelingen, related_name="lopend_reg")
+    
     def __str__(self):
-        return self.naams
+        return self.naam
+

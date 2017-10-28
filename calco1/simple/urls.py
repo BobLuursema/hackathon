@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     url(r'^regelingen/$', views.regelingen),
-    url(r'^suggesties/(?P<naam>.*)/$', views.suggesties),
+    url(r'^suggesties/(?P<id>[0-9]+)/$', views.suggesties),
 ]
