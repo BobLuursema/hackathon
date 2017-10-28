@@ -18,9 +18,9 @@ class Regeling(models.Model):
 class Persoon(models.Model):
     naam = models.CharField(max_length=30)
     leeftijd = models.IntegerField()
-    contactmomenten = models.ManyToManyField(Regeling, null=True, related_name="contact_reg")
-    lopend = models.ManyToManyField(Regeling, null=True, related_name="lopend_reg")
-    browsing = models.ManyToManyField(Regeling, null=True, related_name="browsing_reg")
+    contactmomenten = models.ManyToManyField(Regeling, related_name="contact_reg")
+    lopend = models.ManyToManyField(Regeling, related_name="lopend_reg")
+    browsing = models.ManyToManyField(Regeling, related_name="browsing_reg")
 
     def __str__(self):
         return self.naams
