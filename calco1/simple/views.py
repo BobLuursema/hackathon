@@ -28,7 +28,7 @@ def suggesties(request, id):
     results = {'data':[]}
     for k, v in sorted(reg.items(), key=operator.itemgetter(1)):
         url = m.Regelingen.objects.get(naam=k).info_url
-        results['data'].append({k: url})
+        results['data'].append([k, url])
     results['data'].reverse()
     results['data'] = results['data'][:2]
     return JsonResponse(results)
